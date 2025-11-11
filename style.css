@@ -2,8 +2,8 @@
 
 :root {
     --primary-color: #6a0dad;
-    --accent-color-transparent: rgba(255, 255, 255, 0.07);
-    --text-color-dark: #ccc;
+    --accent-color-transparent: rgba(255, 255, 255, 0.08); /* фон стал почти прозрачный */
+    --text-color-dark: #333;
     --text-color-light: #ffffff;
 }
 
@@ -56,14 +56,14 @@ body {
 .wrapper {
     width: 100%;
     max-width: 500px;
-    background-color: rgba(255, 255, 255, 0.07);
+    background-color: rgba(255, 255, 255, 0.08);
     padding: 30px 0;
     margin-top: 30px;
     border-radius: 20px;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
     box-sizing: border-box;
-    backdrop-filter: blur(45px);
-    -webkit-backdrop-filter: blur(45px);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
 }
 
 .container {
@@ -73,29 +73,22 @@ body {
     text-align: center;
 }
 
-/* Аватар (Minecraft-эффект) */
+/* Аватар */
 .avatar {
-    width: 128px;
-    height: 128px;
-    border-radius: 8px; /* квадратная форма в стиле блоков */
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
-    border: 3px solid #8f39ff;
-    box-shadow:
-        0 0 10px rgba(143, 57, 255, 0.6),
-        0 0 25px rgba(143, 57, 255, 0.3),
-        3px 3px 0 #2d004d; /* пиксельная тень */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 15px rgba(106, 13, 173, 0.6);
+    transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+    image-rendering: pixelated; /* делает изображение чётче и пиксельным */
 }
 
 .avatar:hover {
-    transform: scale(1.05) rotate(2deg);
-    box-shadow:
-        0 0 20px rgba(143, 57, 255, 0.9),
-        0 0 35px rgba(143, 57, 255, 0.6),
-        5px 5px 0 #400066;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(106, 13, 173, 0.9);
 }
 
 /* Тексты */
@@ -121,10 +114,12 @@ h1 {
     animation: typing 4s steps(40, end) 1s forwards, blinkTextCursor 0.7s infinite;
 }
 
+/* Анимация текста */
 @keyframes typing {
     from { width: 0; }
     to { width: 100%; }
 }
+
 @keyframes blinkTextCursor {
     50% { border-color: transparent; }
 }
