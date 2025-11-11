@@ -1,0 +1,94 @@
+/* Используем шрифт Poppins и убираем стандартные отступы */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Установлен шрифт Poppins */
+    /* Твоя "мягкая белая" палитра (очень светлый фон) */
+    background-color: #f0f0f0; 
+    color: #333; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    min-height: 100vh;
+    padding-top: 50px; 
+}
+
+/* Контейнер для центрирования всего содержимого */
+.container {
+    width: 90%;
+    max-width: 450px; 
+    text-align: center;
+    padding: 20px;
+}
+
+/* Стили для аватара */
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    /* Убираем обычную рамку и добавляем тень */
+}
+
+/* Заголовок (никнейм) */
+h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+/* Краткое описание */
+.description {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 35px;
+}
+
+/* Контейнер для кнопок */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 18px; /* Расстояние между кнопками, как на образце */
+}
+
+/* Общие стили для всех кнопок-ссылок */
+.link-button {
+    display: block;
+    width: 100%;
+    padding: 16px 20px; /* Немного больше отступов для объема */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    
+    /* Цветовая схема: белые кнопки, темный текст */
+    background-color: #ffffff;
+    color: #333;
+    
+    border-radius: 14px; /* Более закругленные углы */
+    
+    /* Плавный переход для анимаций */
+    transition: all 0.2s ease-out;
+}
+
+/* Анимация и Тень для сходства */
+.shadow {
+    /* Характерная тень, как на e-z.bio */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Эффект при наведении/нажатии, как на оригинале (кнопка "нажимается" и тень уменьшается) */
+.link-button:hover {
+    background-color: #f8f8f8; 
+    /* Эффект "нажатия" */
+    transform: translateY(1px); 
+    /* Уменьшение тени при наведении */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Эффект при клике на аватар */
+.avatar-link:active .avatar {
+    transform: scale(0.98);
+}
