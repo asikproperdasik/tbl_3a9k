@@ -1,94 +1,191 @@
-/* Используем шрифт Poppins и убираем стандартные отступы */
+/* Переменные для легкости изменения цвета */
+:root {
+    --primary-color: #6a0dad; /* Фирменный фиолетовый */
+    --accent-color: #e6e6fa; /* Очень светлый фиолетовый для фона */
+    --text-color-dark: #333;
+    --text-color-light: #ffffff;
+    --bg-color: #ffffff; /* Чистый белый фон страницы */
+}
+
+/* Сброс стилей и установка шрифта Poppins */
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif; /* Установлен шрифт Poppins */
-    /* Твоя "мягкая белая" палитра (очень светлый фон) */
-    background-color: #f0f0f0; 
-    color: #333; 
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color); 
+    color: var(--text-color-dark);
     display: flex;
-    justify-content: center;
-    align-items: flex-start; 
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
-    padding-top: 50px; 
+    padding-bottom: 50px; 
+    user-select: none;
 }
 
-/* Контейнер для центрирования всего содержимого */
+/* 1. Стили для Баннера (верхняя полоса) */
+.banner {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Стиль курсора для эффекта печати */
+.cursor {
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* 2. Стили для Обёртки (фон/рамка вокруг контента) */
+.wrapper {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--accent-color); /* Светло-фиолетовый фон */
+    padding: 30px 0;
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
 .container {
     width: 90%;
-    max-width: 450px; 
+    max-width: 420px; 
+    margin: 0 auto;
     text-align: center;
-    padding: 20px;
 }
 
-/* Стили для аватара */
+/* Аватар */
 .avatar {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
-    /* Убираем обычную рамку и добавляем тень */
+    /* Точная обводка как на образце: белая рамка + фиолетовый ободок */
+    box-shadow: 0 0 0 5px var(--text-color-light); 
+    border: 3px solid var(--primary-color); 
+    transition: transform 0.2s ease-out;
 }
 
-/* Заголовок (никнейм) */
+.avatar-link:active .avatar {
+    transform: scale(0.95);
+}
+
+/* Заголовки */
 h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 5px;
-    color: #222;
+    color: var(--text-color-dark);
 }
 
-/* Краткое описание */
 .description {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 400;
     color: #555;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
-/* Контейнер для кнопок */
+/* Секция ссылок-кнопок */
 .links {
     display: flex;
     flex-direction: column;
-    gap: 18px; /* Расстояние между кнопками, как на образце */
+    gap: 12px; 
+    margin-bottom: 30px;
 }
 
-/* Общие стили для всех кнопок-ссылок */
 .link-button {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    padding: 16px 20px; /* Немного больше отступов для объема */
+    padding: 15px 20px;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
     
-    /* Цветовая схема: белые кнопки, темный текст */
-    background-color: #ffffff;
-    color: #333;
+    background-color: var(--text-color-light); /* Белая кнопка */
+    color: var(--primary-color); /* Фиолетовый текст */
+    border: 2px solid var(--primary-color); /* Фиолетовая обводка */
     
-    border-radius: 14px; /* Более закругленные углы */
-    
-    /* Плавный переход для анимаций */
+    border-radius: 12px; 
     transition: all 0.2s ease-out;
 }
 
-/* Анимация и Тень для сходства */
-.shadow {
-    /* Характерная тень, как на e-z.bio */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+.link-button i {
+    margin-right: 10px;
+    font-size: 1.2em;
 }
 
-/* Эффект при наведении/нажатии, как на оригинале (кнопка "нажимается" и тень уменьшается) */
+/* Анимация при наведении/нажатии на кнопку: инверсия цвета и сдвиг */
 .link-button:hover {
-    background-color: #f8f8f8; 
-    /* Эффект "нажатия" */
-    transform: translateY(1px); 
-    /* Уменьшение тени при наведении */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background-color: var(--primary-color); 
+    color: var(--text-color-light); 
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Эффект при клике на аватар */
-.avatar-link:active .avatar {
-    transform: scale(0.98);
+/* 3. Стили для Иконок с hover-эффектом (всплывающая надпись) */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    padding-bottom: 10px; /* Дополнительный отступ для всплывающих надписей */
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    
+    border: 2px solid var(--primary-color); /* Обводка */
+    transition: all 0.3s ease;
+}
+
+/* Всплывающая надпись */
+.social-link::after {
+    content: attr(data-label); 
+    position: absolute;
+    bottom: 100%; 
+    left: 50%;
+    transform: translate(-50%, -5px);
+    
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Эффект при наведении на иконку */
+.social-link:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    transform: translateY(-5px); 
+}
+
+/* Показываем всплывающую надпись при наведении */
+.social-link:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -10px); 
 }
