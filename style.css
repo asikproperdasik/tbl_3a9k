@@ -1,6 +1,6 @@
 :root {
     --primary-color: #6a0dad;
-    --accent-color-transparent: rgba(255, 255, 255, 0.25);
+    --accent-color-transparent: rgba(255, 255, 255, 0.15); /* фон ещё прозрачнее */
     --text-color-dark: #333;
     --text-color-light: #ffffff;
 }
@@ -54,16 +54,14 @@ body {
 .wrapper {
     width: 100%;
     max-width: 500px;
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.15); /* ещё прозрачнее */
     padding: 30px 0;
     margin-top: 30px;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
-
-    /* Эффект размытия стекла */
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
 }
 
 .container {
@@ -99,10 +97,26 @@ h1 {
 }
 
 .description {
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: #555;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #d2a6ff; /* нежно-фиолетовый */
+    text-shadow: 0 0 10px rgba(210, 166, 255, 0.7);
     margin-bottom: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #d2a6ff;
+    width: 0;
+    animation: typing 4s steps(40, end) 1s forwards, blinkTextCursor 0.7s infinite;
+}
+
+/* Анимация текста */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blinkTextCursor {
+    50% { border-color: transparent; }
 }
 
 /* Кнопки-ссылки */
@@ -170,8 +184,8 @@ h1 {
 .social-link:hover {
     background-color: rgba(106, 13, 173, 0.15);
     color: var(--text-color-light);
-    transform: scale(1.2);
-    box-shadow: 0 0 20px 4px rgba(106, 13, 173, 0.6);
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 0 25px 5px rgba(106, 13, 173, 0.6);
     border-color: rgba(255, 255, 255, 0.8);
 }
 
