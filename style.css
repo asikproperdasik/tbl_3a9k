@@ -1,16 +1,32 @@
 /* Переменные для легкости изменения цвета */
 :root {
     --primary-color: #6a0dad; /* Фирменный фиолетовый */
-    --accent-color: #e6e6fa; /* Очень светлый фиолетовый для фона */
+    /* Мягкий, полупрозрачный белый для обёртки (wrapper) */
+    --accent-color-transparent: rgba(255, 255, 255, 0.85); 
     --text-color-dark: #333;
     --text-color-light: #ffffff;
-    --bg-color: #ffffff; /* Чистый белый фон страницы (мы его переопределим ниже) */
+}
+
+/* Стили для полноэкранного видео-фона */
+#video-background {
+    position: fixed; /* Фиксируем его на месте */
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100; /* Отправляем его на задний план */
+    background-size: cover;
+    /* Убедимся, что фон не выглядит слишком ярким, чтобы контент был читаемым */
+    filter: brightness(0.7) blur(1px); /* Делаем темнее и немного размытым */
 }
 
 /* Сброс стилей и установка шрифта Poppins */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    /* Убрана фоновая картинка/цвет, т.к. используется видео */
     color: var(--text-color-dark);
     display: flex;
     flex-direction: column;
@@ -18,30 +34,24 @@ body {
     min-height: 100vh;
     padding-bottom: 50px; 
     user-select: none;
-    
-    /* --- НОВЫЕ СТИЛИ ДЛЯ ФОНОВОГО ИЗОБРАЖЕНИЯ --- */
-    background-image: url('background.jpg'); /* Имя файла, который ты загрузишь */
-    background-size: cover; /* Изображение растягивается на весь экран */
-    background-attachment: fixed; /* Фон остаётся на месте при прокрутке */
-    background-position: center center;
 }
 
-/* 1. Стили для Баннера (верхняя полоса) */
+/* 1. Стили для Баннера (верхняя полоса) - теперь это просто фиолетовая полоса! */
 .banner {
-    /* ... (Стили без изменений) */
     width: 100%;
     padding: 10px 0;
     text-align: center;
+    
+    /* Снова делаем его просто фиолетовой полосой */
     background-color: var(--primary-color);
+    
     color: var(--text-color-light);
     font-size: 0.9rem;
     font-weight: 600;
-    /* ... */
 }
 
 /* Стиль курсора для эффекта печати */
 .cursor {
-    /* ... (Стили без изменений) */
     animation: blink 0.7s infinite;
 }
 @keyframes blink {
@@ -50,18 +60,18 @@ body {
 
 /* 2. Стили для Обёртки (фон/рамка вокруг основного контента) */
 .wrapper {
-    /* ... (Стили без изменений) */
     width: 100%;
     max-width: 500px;
-    background-color: var(--accent-color); /* Светло-фиолетовый фон, чтобы контент был виден на фоне */
+    /* Полупрозрачный белый фон */
+    background-color: var(--accent-color-transparent); 
     padding: 30px 0;
     margin-top: 30px;
     border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     box-sizing: border-box;
+    /* Добавляем эффект размытия (Blur) */
+    backdrop-filter: blur(10px);
 }
-
-/* Все остальные стили остаются без изменений */
 
 .container {
     width: 90%;
@@ -69,7 +79,8 @@ body {
     margin: 0 auto;
     text-align: center;
 }
-/* ... (Остальные стили: аватар, ссылки и иконки) ... */
+
+/* Аватар */
 .avatar {
     width: 110px;
     height: 110px;
@@ -85,6 +96,7 @@ body {
     transform: scale(0.95);
 }
 
+/* Заголовки и текст без изменений */
 h1 {
     font-size: 1.5rem;
     font-weight: 700;
@@ -99,7 +111,8 @@ h1 {
     color: #555;
     margin-bottom: 30px;
 }
-/* ... (Стили для .links, .link-button, .social-icons) ... */
+
+/* Секция ссылок-кнопок */
 .links {
     display: flex;
     flex-direction: column;
@@ -135,6 +148,7 @@ h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Секция социальных иконок */
 .social-icons {
     display: flex;
     justify-content: center;
