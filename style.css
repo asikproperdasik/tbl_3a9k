@@ -2,7 +2,7 @@
 
 :root {
     --primary-color: #6a0dad;
-    --accent-color-transparent: rgba(255, 255, 255, 0.08); /* фон стал почти прозрачный */
+    --accent-color-transparent: rgba(255, 255, 255, 0.08);
     --text-color-dark: #333;
     --text-color-light: #ffffff;
 }
@@ -30,7 +30,7 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding-bottom: 50px; 
+    padding-bottom: 50px;
     user-select: none;
 }
 
@@ -68,7 +68,7 @@ body {
 
 .container {
     width: 90%;
-    max-width: 420px; 
+    max-width: 420px;
     margin: 0 auto;
     text-align: center;
 }
@@ -83,7 +83,7 @@ body {
     border: 3px solid var(--primary-color);
     box-shadow: 0 0 15px rgba(106, 13, 173, 0.6);
     transition: transform 0.2s ease-out, box-shadow 0.3s ease;
-    image-rendering: pixelated; /* делает изображение чётче и пиксельным */
+    image-rendering: pixelated;
 }
 
 .avatar:hover {
@@ -114,7 +114,6 @@ h1 {
     animation: typing 4s steps(40, end) 1s forwards, blinkTextCursor 0.7s infinite;
 }
 
-/* Анимация текста */
 @keyframes typing {
     from { width: 0; }
     to { width: 100%; }
@@ -128,36 +127,41 @@ h1 {
 .links {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center; /* центрирует кнопки */
+    gap: 15px;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .link-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 85%; /* одинаковая ширина всех кнопок */
+    max-width: 380px;
     padding: 15px 20px;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
-    background-color: var(--text-color-light);
-    color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.1); /* прозрачность */
+    color: var(--text-color-light);
     border: 2px solid var(--primary-color);
     border-radius: 12px;
-    transition: all 0.2s ease-out;
+    transition: all 0.3s ease-out;
+    box-shadow: 0 0 10px rgba(106, 13, 173, 0.3);
+    backdrop-filter: blur(8px);
 }
 
 .link-button i {
     margin-right: 10px;
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 .link-button:hover {
     background-color: var(--primary-color);
     color: var(--text-color-light);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(106, 13, 173, 0.8);
 }
 
 /* Социальные иконки */
