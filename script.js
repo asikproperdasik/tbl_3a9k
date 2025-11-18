@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Typewriter-эффект для баннера
     const textArray = [
-        "qq! I`m Tbl_3a9k.", 
-        "What the fuck?", 
-        "Hello World!"
+        "Привет! Я Tbl_3a9k.", 
+        "Смотри мои ссылки!", 
+        "Добро пожаловать в мой мир!"
     ];
     
     let textIndex = 0;
     let charIndex = 0;
     const speed = 100;
     const pauseTime = 1500;
-
     const targetElement = document.getElementById("typewriter-text");
 
     function type() {
@@ -43,6 +43,35 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     type();
+
+    // Typewriter-эффект для описания
+    const descText = "Я последний живой принц в этом дохлом поместье";
+    const descElem = document.getElementById("dynamic-description");
+    let descIndex = 0;
+    let descMode = "print";
+    function typewriterDesc() {
+        if (!descElem) return;
+        if (descMode === "print") {
+            if (descIndex < descText.length) {
+                descElem.textContent = descText.slice(0, descIndex + 1);
+                descIndex++;
+                setTimeout(typewriterDesc, 90);
+            } else {
+                descMode = "erase";
+                setTimeout(typewriterDesc, 1400);
+            }
+        } else {
+            if (descIndex > 0) {
+                descElem.textContent = descText.slice(0, descIndex - 1);
+                descIndex--;
+                setTimeout(typewriterDesc, 45);
+            } else {
+                descMode = "print";
+                setTimeout(typewriterDesc, 700);
+            }
+        }
+    }
+    typewriterDesc();
 });
 
 // МЕТЕОРЫ, пролетающие над фоном
@@ -61,7 +90,7 @@ if (mc) {
         this.y = -10;
         this.length = 60 + Math.random() * 60;
         this.speed = 4 + Math.random() * 4;
-        this.angle = Math.PI / 4; // 45 градусов
+        this.angle = Math.PI / 4;
         this.alpha = 0.7 + Math.random() * 0.3;
         this.color = `rgba(210,166,255,${this.alpha})`;
     }
