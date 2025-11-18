@@ -21,6 +21,17 @@
     filter: brightness(0.7) blur(1px);
 }
 
+/* Canvas meteors */
+#meteors-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
 /* Основное тело */
 body {
     margin: 0;
