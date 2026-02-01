@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Typewriter-эффект для баннера
     const textArray = [
-        "Привет! Я Tbl_3a9k.", 
-        "Смотри мои ссылки!", 
-        "Добро пожаловать в мой мир!"
+        "qq, я голодач.", 
+        "чекай мои ссылки", 
+        "Добро пожаловать в мой мир"
     ];
     
     let textIndex = 0;
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
     type();
 
     // Typewriter-эффект для описания
-    const descText = "Я последний живой принц в этом дохлом поместье";
+    const descText = "Каждый сантиметр твоего тела..";
     const descElem = document.getElementById("dynamic-description");
     let descIndex = 0;
     let descMode = "print";
